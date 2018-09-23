@@ -2,6 +2,10 @@
 
 Copyright (c) 2018 Matt Tropiano. All rights reserved.
 
+## Notice
+
+This README's Documentation is totally incomplete. Sorry.
+
 ## Introduction
 
 AJAXBlaster is a reduced set, jQuery-like Ajax utility library for browser JavaScript.
@@ -156,13 +160,13 @@ Restores the previous assigning of `$A` on the global context.
 
 #### AJAXBlaster.isBlank ( object )
 
-#### AJAXBlaster.each ( object )
+#### AJAXBlaster.each ( object, function )
 
-#### AJAXBlaster.merge ( object )
+#### AJAXBlaster.merge ( object, object )
 
 #### AJAXBlaster.queryString ( object )
 
-#### AJAXBlaster.nanoTime ( object )
+#### AJAXBlaster.nanoTime ( )
 
 
 ## Licensing
