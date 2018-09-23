@@ -139,7 +139,7 @@
 	
 	/*** Main Object ***/
 
-	let _AJAXBlasterCall = function(xhr, opt, body)
+	let AJAXBlasterCall = function(xhr, opt, body)
 	{
 		// callbacks
 		this.beforeSendFunc = null;
@@ -225,7 +225,7 @@
 	 *		xhr (XMLHttpResponse): the actual XMLHttpResponse object.
 	 * @return itself for chaining.
 	 */
-	_AJAXBlasterCall.prototype.beforeSend = function(func){
+	AJAXBlasterCall.prototype.beforeSend = function(func){
 		this.beforeSendFunc = func;
 		return this;
 	};
@@ -238,7 +238,7 @@
 	 *		event (ProgressEvent): the actual Event object.
 	 * @return itself for chaining.
 	 */
-	_AJAXBlasterCall.prototype.progress = function(func){
+	AJAXBlasterCall.prototype.progress = function(func){
 		this.progressFunc = func;
 		return this;
 	};
@@ -253,7 +253,7 @@
 	 *		event (ProgressEvent): the actual Event object.
 	 * @return itself for chaining.
 	 */
-	_AJAXBlasterCall.prototype.success = function(func){
+	AJAXBlasterCall.prototype.success = function(func){
 		this.successFunc = func;
 		return this;
 	};
@@ -268,7 +268,7 @@
 	 *		err (Error): JS error object if error.
 	 * @return itself for chaining.
 	 */
-	_AJAXBlasterCall.prototype.failure = function(func){
+	AJAXBlasterCall.prototype.failure = function(func){
 		this.failureFunc = func;
 		return this;
 	};
@@ -280,7 +280,7 @@
 	 *		event (ProgressEvent): the actual Event object.
 	 * @return itself for chaining.
 	 */
-	_AJAXBlasterCall.prototype.always = function(func){
+	AJAXBlasterCall.prototype.always = function(func){
 		this.alwaysFunc = func;
 		return this;
 	};
@@ -292,7 +292,7 @@
 	 *		event (ProgressEvent): the actual Event object.
 	 * @return itself for chaining.
 	 */
-	_AJAXBlasterCall.prototype.abort = function(func){
+	AJAXBlasterCall.prototype.abort = function(func){
 		this.abortFunc = func;
 		return this;
 	};
@@ -367,7 +367,7 @@
 	 *		async (Boolean): If true, asynchronus. Else, wait until completion.
 	 *		user (string): username for authorization.
 	 *		password (string): password for authorization.
-	 * @return an _AJAXBlasterCall instance.
+	 * @return an AJAXBlasterCall instance.
 	 */
 	_CTX.AJAXBlaster = function(param){
 		let options = null;
@@ -485,7 +485,7 @@
 		if (opt.headers) Util.each(opt.headers, (value, key)=>{
 			xhr.setRequestHeader(key, value);
 		});
-		return new _AJAXBlasterCall(xhr, opt, body);
+		return new AJAXBlasterCall(xhr, opt, body);
 	};
 
 	/**

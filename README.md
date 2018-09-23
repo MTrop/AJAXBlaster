@@ -6,6 +6,9 @@ Copyright (c) 2018 Matt Tropiano. All rights reserved.
 
 This README's Documentation is totally incomplete. Sorry.
 
+Before a "v1.0" is set, the contents of this API is subject to change between commits. Use caution!
+
+
 ## Introduction
 
 AJAXBlaster is a reduced set, jQuery-like Ajax utility library for browser JavaScript.
@@ -30,6 +33,8 @@ AJAXBlaster's inclusion with:
 
 
 ## Documentation
+
+Parameters enclosed in `[]` are optional.
 
 ### Main Calls
 
