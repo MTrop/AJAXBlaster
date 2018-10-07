@@ -123,7 +123,7 @@
 
 	/*** Handlers of responses. ***/
 
-	let DEFAULTRESPONSETYPE_HANDLER = function(responseType, responseContent) 
+	let DEFAULTRESPONSETYPE_HANDLER = function(responseContent) 
 	{
 		if (!Util.isString(responseContent))
 			return Object.prototype.toString.call(responseContent);
@@ -151,7 +151,7 @@
 		
 		xhr.addEventListener("progress", (event)=>{
 			if (this.progressFunc) 
-				this.progressFunc((event.lengthComputable ? event.loaded / event.total : 0), xhr, event);
+				this.progressFunc((event.lengthComputable ? event.loaded / event.total : 0), event.loaded, event.total, xhr, event);
 		});
 		xhr.addEventListener("error", (event)=>{
 			if (this.failureFunc) 
@@ -234,6 +234,8 @@
 	 * Sets the function to invoke on progress updates (if supported).
 	 * @param func (Function) a function that takes:
 	 *		percent (Number): percent progress.
+	 *		loaded (Number): loaded amount progress (if length is computable - may be undefined if not).
+	 *		total (Number): total amount progress (if length is computable - may be undefined if not).
 	 *		xhr (XMLHttpResponse): the actual XMLHttpResponse object.
 	 *		event (ProgressEvent): the actual Event object.
 	 * @return itself for chaining.
@@ -509,15 +511,18 @@
 	 * 		responseContentType (string) the content type as-is from an XHR response header (Content-Type).
 	 */
 	_CTX.AJAXBlaster.addResponseHandler = function(typeName, func) {
-		if (Util.isArray(typeName))
+
+		let ADD = function(t, f)
 		{
-			for (let i = 0; i < typeName.length; i++)
-				RESPONSETYPE_HANDLERS[typeName[i]] = func;
-		}
+			if (RESPONSETYPE_HANDLERS[t])
+				console.warn("AJAXBlaster: a script is replacing the response handler for '" + t + "'.");
+			RESPONSETYPE_HANDLERS[t] = f;
+		};
+
+		if (Util.isArray(typeName)) for (let i = 0; i < typeName.length; i++)
+			ADD(typeName[i], func);
 		else
-		{
-			RESPONSETYPE_HANDLERS[typeName] = func;
-		}
+			ADD(typeName, func);
 	};
 
 	/**
