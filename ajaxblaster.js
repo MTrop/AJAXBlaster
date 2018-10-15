@@ -2,6 +2,7 @@
  * AJAXBlaster by Matt Tropiano (C) 2018
  * Requires ECMAScript 6, XMLHttpRequest
  * Licensed for use under the MIT License
+ * @license
  ****************************************************************************/
 
 (function(_CTX)
